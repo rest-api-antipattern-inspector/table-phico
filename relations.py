@@ -10,8 +10,6 @@ def print_relation(table):
 
     # https://www.statisticshowto.com/phi-coefficient-mean-square-contingency-coefficient/
 
-    # if 0, skip, see if same result, if works even if one zero then better
-
     numerator = a * d - b * c
     denominator = math.sqrt(
         (a + b) * (c + d) * (a + c) * (b + d)
