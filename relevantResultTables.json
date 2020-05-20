@@ -45,6 +45,15 @@
     "result": 0.21591016124825807
   },
   {
+    "keyOne": "TidyURI",
+    "keyTwo": "ContentNegotiation",
+    "a": 201,
+    "b": 89,
+    "c": 36,
+    "d": 0,
+    "result": -0.21591016124825807
+  },
+  {
     "keyOne": "AmorphousURI",
     "keyTwo": "isIgnoringMIMEType",
     "a": 0,
