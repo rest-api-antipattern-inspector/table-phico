@@ -2,7 +2,7 @@ import math
 import data
 
 
-def print_relation(table):
+def add_results(table):
     a = table["a"]
     b = table["b"]
     c = table["c"]
@@ -20,10 +20,14 @@ def print_relation(table):
     else:
         r = "NA"
 
-    print(table["keyOne"], "&", table["keyTwo"], ":", r)
+    # print(table["keyOne"], "&", table["keyTwo"], ":", r)
+
+    table["result"] = r
 
 
 data_tables = data.get_json_data()
 
 for table in data_tables:
-    print_relation(table)
+    add_results(table)
+
+data.write_result_table(data_tables)
