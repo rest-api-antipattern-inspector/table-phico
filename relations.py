@@ -1,33 +1,39 @@
-import math
+# import math
+from sklearn.metrics import matthews_corrcoef
 import data
+import utils
 
-# the Python code implements the method for calculating phi coefficient
-# described in the following link:
+# reuses functionality from one of our archived repos:
+# https://github.com/rest-api-antipattern-inspector/relation-stats
+
+# source about phi coefficient
 # https://www.statisticshowto.com/phi-coefficient-mean-square-contingency-coefficient/
 
+# documentation for this method
+# https://scikit-learn.org/stable/modules/generated/sklearn.metrics.matthews_corrcoef.html
 
-def add_results(table):
-    a = table["a"]
-    b = table["b"]
-    c = table["c"]
-    d = table["d"]
-
-    numerator = a * d - b * c
-    denominator = math.sqrt(
-        (a + b) * (c + d) * (a + c) * (b + d)
-    )
-
-    if numerator is not 0:
-        r = numerator / denominator
-    else:
-        r = "NA"
-
-    table["result"] = r
+endpoints_data = data.get_endpoints_data()
 
 
-data_tables = data.get_json_data()
+def stats(type_a, type_b):  # type_a & type_b: (anti)pattern types
+    for a_key in endpoints_data[type_a].keys():
+        y_true_list = endpoints_data[type_a][a_key]
 
-for table in data_tables:
-    add_results(table)
+        for b_key in endpoints_data[type_b].keys():
+            y_pred_list = endpoints_data[type_b][b_key]
 
-data.write_result_table(data_tables)
+            # TODO also if all 1
+            if (utils.all_equal(y_true_list) or utils.all_equal(y_pred_list)):
+                print(a_key, "vs", b_key, "NA")
+            else:
+                result = matthews_corrcoef(y_true_list, y_pred_list)
+                print(a_key, "vs", b_key, result)
+
+
+stats("linguisticPatterns", "designAntipatterns")
+
+stats("linguisticPatterns", "designPatterns")
+
+stats("designPatterns", "linguisticAntipatterns")
+
+stats("linguisticAntipatterns", "designAntipatterns")
