@@ -59,3 +59,8 @@ def get_endpoints_data():
             data["designPatterns"][dPKey].append(dPBinary)
 
     return data
+
+def write_json(fileName, data):
+    file = open(fileName, "w")
+    file.write(json.dumps(data))
+    file.close()

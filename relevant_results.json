@@ -1,0 +1,52 @@
+[
+  {
+    "category": "linguisticPatterns vs designAntipatterns",
+    "qualities": "TidyURI vs isIgnoringMIMEType",
+    "result": 0.21591016124825807
+  },
+  {
+    "category": "linguisticPatterns vs designAntipatterns",
+    "qualities": "TidyURI vs isMisusingCookies",
+    "result": 0.2343678477700284
+  },
+  {
+    "category": "linguisticPatterns vs designAntipatterns",
+    "qualities": "VerblessURI vs isMisusingCookies",
+    "result": -0.3658543839444897
+  },
+  {
+    "category": "linguisticPatterns vs designAntipatterns",
+    "qualities": "ContextualisedResource vs isIgnoringStatusCode",
+    "result": -0.24212563459262718
+  },
+  {
+    "category": "linguisticPatterns vs designPatterns",
+    "qualities": "TidyURI vs ContentNegotiation",
+    "result": -0.21591016124825807
+  },
+  {
+    "category": "designPatterns vs linguisticAntipatterns",
+    "qualities": "ContentNegotiation vs AmorphousURI",
+    "result": 0.21591016124825807
+  },
+  {
+    "category": "linguisticAntipatterns vs designAntipatterns",
+    "qualities": "AmorphousURI vs isIgnoringMIMEType",
+    "result": -0.21591016124825807
+  },
+  {
+    "category": "linguisticAntipatterns vs designAntipatterns",
+    "qualities": "AmorphousURI vs isMisusingCookies",
+    "result": -0.2343678477700284
+  },
+  {
+    "category": "linguisticAntipatterns vs designAntipatterns",
+    "qualities": "CRUDyURI vs isMisusingCookies",
+    "result": 0.3658543839444897
+  },
+  {
+    "category": "linguisticAntipatterns vs designAntipatterns",
+    "qualities": "ContextlessResource vs isIgnoringStatusCode",
+    "result": 0.24212563459262718
+  }
+]

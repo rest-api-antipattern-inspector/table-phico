@@ -1,4 +1,3 @@
-# import math
 from sklearn.metrics import matthews_corrcoef
 import data
 import utils
@@ -14,6 +13,7 @@ import utils
 
 endpoints_data = data.get_endpoints_data()
 
+relevant = []
 
 def stats(type_a, type_b):  # type_a & type_b: (anti)pattern types
     for a_key in endpoints_data[type_a].keys():
@@ -29,6 +29,15 @@ def stats(type_a, type_b):  # type_a & type_b: (anti)pattern types
                 result = matthews_corrcoef(y_true_list, y_pred_list)
                 print(a_key, "vs", b_key, result)
 
+                if (result >= 0.2 or result <= -0.2):
+                    #
+                    data = {
+                        "category": type_a + " vs " + type_b,
+                        "qualities": a_key + " vs " + b_key,
+                        "result": result
+                    }
+
+                    relevant.append(data)
 
 stats("linguisticPatterns", "designAntipatterns")
 
@@ -37,3 +46,5 @@ stats("linguisticPatterns", "designPatterns")
 stats("designPatterns", "linguisticAntipatterns")
 
 stats("linguisticAntipatterns", "designAntipatterns")
+
+data.write_json("relevant_results.json", relevant)
